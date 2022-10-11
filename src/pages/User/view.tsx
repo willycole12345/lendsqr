@@ -14,7 +14,7 @@ function UserView() {
     useEffect(() => {
         const getUser = async () => {
             const user: UserInterface = JSON.parse(localStorage.getItem(`curr-user`) || '');
-            if (user && user?.id === parseInt(userid || '-1')) setUser(user);
+            if (user && +user?.id === +(userid || '-1')) setUser(user);
             else
                 try {
                     const res = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userid}`);
