@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { FormEventHandler, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { banner, logo, welcome } from '../images';
 
-function Login() {
+const Login = () => {
     const [passwordShown, setPasswordShown] = useState(false),
-        togglePassword = () => setPasswordShown(!passwordShown);
+        navigate = useNavigate(),
+        togglePassword = () => setPasswordShown(!passwordShown),
+        onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+            e.preventDefault();
+            return navigate('/dashboard');
+        };
+
     return (
         <>
             <div className="container-fluid">
@@ -19,7 +26,7 @@ function Login() {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <form action="">
+                        <form onSubmit={onSubmit}>
                             <div className="header_title">
                                 <img src={welcome} alt="welcome" />
                                 <p> Enter details to login.</p>
@@ -35,7 +42,9 @@ function Login() {
                                 <div className="password_forget">
                                     <span className="forget_pass">forget password ?</span>
                                 </div>
-                                <button className="btn btn-success butt-style"> Login</button>
+                                <button type="submit" className="btn btn-success butt-style">
+                                    Login
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -43,6 +52,6 @@ function Login() {
             </div>
         </>
     );
-}
+};
 
 export default Login;

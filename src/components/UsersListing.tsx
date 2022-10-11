@@ -4,6 +4,7 @@ import { forwardRef, useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import DataTable from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 
 import { moreDetails, userIcon } from '../images';
 import { UserInterface } from '../types';
@@ -34,13 +35,13 @@ function UserListing() {
 
     const getRecords = async () => {
             try {
-                const res = await axios.get('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
+                const res = await axios.get(`${API_URL}/v1/users`);
                 setRecords(res.data);
                 setPending(false);
             } catch (error) {}
         },
         onViewDetails = (user: UserInterface) => {
-            localStorage.setItem(`curr-user`, JSON.stringify(user));
+            localStorage.setItem(`currUser`, JSON.stringify(user));
             navigate(`/users/${user.id}`);
         };
 

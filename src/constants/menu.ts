@@ -31,10 +31,10 @@ const menuList: {
 } = {
     others: [
         { icon: briefcase, title: 'Switch Organization', iconAlt: 'Switch Organization' },
-        { icon: home, title: 'Dashboard', iconAlt: 'dashboard' }
+        { icon: home, title: 'Dashboard', iconAlt: 'dashboard', href: '/dashboard' }
     ],
     customers: [
-        { icon: userfriends, title: 'Users', iconAlt: 'user', isActive: true },
+        { icon: userfriends, title: 'Users', iconAlt: 'user', href: '/users' },
         { icon: usersPro, title: 'Guarantors', iconAlt: 'Guarantors' },
         { icon: sackpro, title: 'Loans', iconAlt: 'Loans' },
         { icon: handshakeregular, title: 'Decision M', iconAlt: 'Decision M' },

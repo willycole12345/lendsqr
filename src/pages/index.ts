@@ -1,5 +1,6 @@
 import Dashboard from './Dashboard';
 import Login from './Login';
-import UserView from './User/view';
+import Users from './Users';
+import UserView from './Users/view';
 
-export { Login, Dashboard, UserView };
+export { Login, Dashboard, UserView, Users };

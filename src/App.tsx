@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Dashboard, Login, UserView } from './pages';
+import routes from './constants/routes';
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/users/:userid" element={<UserView />} />
+                {routes.map((_, i) => (
+                    <Route key={i} {..._} />
+                ))}
             </Routes>
         </BrowserRouter>
     );

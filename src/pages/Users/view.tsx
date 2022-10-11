@@ -2,22 +2,23 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import AccountLayout from '../../components/Layout/AccountLayout';
+import { AccountLayout } from '../../components';
+import { API_URL } from '../../config';
 import { avatar, full, star } from '../../images';
 import { UserInterface } from '../../types';
 import { toCurrency } from '../../utils';
 
 function UserView() {
-    const { userid } = useParams(),
+    const { userId } = useParams(),
         [user, setUser] = useState<UserInterface>();
 
     useEffect(() => {
         const getUser = async () => {
-            const user: UserInterface = JSON.parse(localStorage.getItem(`curr-user`) || '');
-            if (user && +user?.id === +(userid || '-1')) setUser(user);
+            const user: UserInterface = JSON.parse(localStorage.getItem(`currUser`) || '');
+            if (user && +user?.id === +(userId || '-1')) setUser(user);
             else
                 try {
-                    const res = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userid}`);
+                    const res = await axios.get(`${API_URL}/v1/users/${userId}`);
                     setUser(res.data);
                 } catch (error) {
                     console.log(error);
@@ -26,7 +27,7 @@ function UserView() {
         getUser();
 
         return () => {};
-    }, [userid]);
+    }, [userId]);
 
     if (!user) return <div className="">User Not Found</div>;
     else {
