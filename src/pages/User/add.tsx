@@ -6,4 +6,4 @@ function UserAdd() {
   )
 }
 
-export default UserAdd
+export default UserAdd;
