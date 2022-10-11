@@ -37,6 +37,7 @@ function Header() {
                             <div className="input-group">
                                 <input type="text" className="form-control" />
                                 <span className="input-group-text">
+                                    {' '}
                                     <img className="" src={vector} alt="vector" />
                                 </span>
                             </div>

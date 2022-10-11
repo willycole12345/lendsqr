@@ -13,15 +13,12 @@ function UserView() {
 
     useEffect(() => {
         const getUser = async () => {
-            const user: UserInterface = JSON.parse(localStorage.getItem(`curr-user`) || '');
-            if (user && user?.id === parseInt(userid || '-1')) setUser(user);
-            else
-                try {
-                    const res = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userid}`);
-                    setUser(res.data);
-                } catch (error) {
-                    console.log(error);
-                }
+            try {
+                const res = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userid}`);
+                setUser(res.data);
+            } catch (error) {
+                console.log(error);
+            }
         };
         getUser();
 
@@ -163,12 +160,12 @@ function UserView() {
                                                 <h2 className="nameplace">
                                                     {education.monthlyIncome.map((_) => (
                                                         <span>{toCurrency(_)}</span>
-                                                    ))}
+                                                    ))}{' '}
                                                 </h2>
                                             </div>
                                             <div className="col-md-2 mrg_top padd">
                                                 <p className="namestye">Repayment</p>
-                                                <h2 className="nameplace">{toCurrency(education.loanRepayment)} </h2>
+                                                <h2 className="nameplace">{education.loanRepayment} </h2>
                                             </div>
                                         </div>
                                         <hr className="hrstyle" />

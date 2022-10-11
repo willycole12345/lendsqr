@@ -558,5 +558,6 @@
 } /*# sourceMappingURL=Custom.css.map */
 
 .bueHSC {
-    margin-right: auto !important;
+    margin: 0 24px;
+    margin-right: auto;
 }

@@ -41,7 +41,7 @@ function UserListing() {
         },
         onViewDetails = (user: UserInterface) => {
             localStorage.setItem(`curr-user`, JSON.stringify(user));
-            navigate(`/users/${user.id}`);
+            navigate(`/user/${user.id}`);
         };
 
     useEffect(() => {

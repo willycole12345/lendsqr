@@ -3,7 +3,6 @@ import moment from 'moment';
 import { forwardRef, useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import DataTable from 'react-data-table-component';
-import { useNavigate } from 'react-router-dom';
 
 import { moreDetails, userIcon } from '../images';
 import { UserInterface } from '../types';
@@ -29,8 +28,7 @@ const MoreToggle = forwardRef(({ onClick }: any, ref: any) => (
 
 function UserListing() {
     const [records, setRecords] = useState<any[]>([]),
-        [pending, setPending] = useState(true),
-        navigate = useNavigate();
+        [pending, setPending] = useState(true);
 
     const getRecords = async () => {
             try {
@@ -39,11 +37,7 @@ function UserListing() {
                 setPending(false);
             } catch (error) {}
         },
-        onViewDetails = (user: UserInterface) => {
-            localStorage.setItem(`curr-user`, JSON.stringify(user));
-            navigate(`/users/${user.id}`);
-        };
-
+        onViewDetails = (user: UserInterface) => {};
     useEffect(() => {
         getRecords();
     }, []);

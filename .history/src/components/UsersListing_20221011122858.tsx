@@ -36,12 +36,11 @@ function UserListing() {
             try {
                 const res = await axios.get('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
                 setRecords(res.data);
-                setPending(false);
             } catch (error) {}
         },
         onViewDetails = (user: UserInterface) => {
             localStorage.setItem(`curr-user`, JSON.stringify(user));
-            navigate(`/users/${user.id}`);
+            navigate(`/user/${user.id}`);
         };
 
     useEffect(() => {

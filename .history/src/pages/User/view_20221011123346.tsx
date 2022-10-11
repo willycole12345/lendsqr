@@ -13,15 +13,13 @@ function UserView() {
 
     useEffect(() => {
         const getUser = async () => {
-            const user: UserInterface = JSON.parse(localStorage.getItem(`curr-user`) || '');
-            if (user && user?.id === parseInt(userid || '-1')) setUser(user);
-            else
-                try {
-                    const res = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userid}`);
-                    setUser(res.data);
-                } catch (error) {
-                    console.log(error);
-                }
+            const user = JSON.parse(localStorage.getItem(`curr-user`) || '');
+            try {
+                const res = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userid}`);
+                setUser(res.data);
+            } catch (error) {
+                console.log(error);
+            }
         };
         getUser();
 

@@ -3,7 +3,7 @@ import moment from 'moment';
 import { forwardRef, useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import DataTable from 'react-data-table-component';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { moreDetails, userIcon } from '../images';
 import { UserInterface } from '../types';
@@ -29,8 +29,7 @@ const MoreToggle = forwardRef(({ onClick }: any, ref: any) => (
 
 function UserListing() {
     const [records, setRecords] = useState<any[]>([]),
-        [pending, setPending] = useState(true),
-        navigate = useNavigate();
+        [pending, setPending] = useState(true);
 
     const getRecords = async () => {
             try {
@@ -39,11 +38,7 @@ function UserListing() {
                 setPending(false);
             } catch (error) {}
         },
-        onViewDetails = (user: UserInterface) => {
-            localStorage.setItem(`curr-user`, JSON.stringify(user));
-            navigate(`/users/${user.id}`);
-        };
-
+        onViewDetails = (user: UserInterface) => {};
     useEffect(() => {
         getRecords();
     }, []);
@@ -90,7 +85,7 @@ function UserListing() {
                             <Dropdown>
                                 <Dropdown.Toggle as={MoreToggle} variant="transparent" id={`dropdown-${_.id}`} />
                                 <Dropdown.Menu>
-                                    <div role={'button'} onClick={() => onViewDetails(_)} className="d-block  py-2 px-1">
+                                    <div onClick={() => onViewDetails(_)} className="d-block  py-2 px-1">
                                         <img width={20} src={userIcon} alt="userpro" className="mx-2" />
                                         <small>View details</small>
                                     </div>
